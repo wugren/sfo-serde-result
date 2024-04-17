@@ -7,14 +7,14 @@ pub enum SerdeResult<T, E> {
     Err(E)
 }
 
-impl<T, E> From<sfo_result::Result<T>> for SerdeResult<T, sfo_result::Error<E>>
+impl<T, E> From<sfo_result::Result<T>> for SerdeResult<T, E>
 where
     T: Serialize + for<'a> Deserialize<'a>,
-    E: Serialize + for<'a> Deserialize<'a> + Debug + Display + Copy + Eq + PartialEq + Sync + Send + Default + 'static{
+    E: Serialize + for<'a> Deserialize<'a> + Debug + Display + Sync + Send + 'static + From<String> {
     fn from(value: sfo_result::Result<T>) -> Self {
         match value {
             Ok(t) => SerdeResult::Ok(t),
-            Err(e) => SerdeResult::Err(e.downcast::<sfo_result::Error<E>>().unwrap_or_else(|e| sfo_result::Error::<E>::from(format!("{}", e)))),
+            Err(e) => SerdeResult::Err(e.downcast::<E>().unwrap_or_else(|e| E::from(format!("{}", e)))),
         }
     }
 }

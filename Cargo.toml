@@ -1,6 +1,6 @@
 [package]
 name = "sfo-serde-result"
-version = "0.1.0"
+version = "0.1.2"
 edition = "2021"
 license-file = "LICENSE"
 repository = "https://github.com/wugren/sfo-serde-result.git"
@@ -10,4 +10,4 @@ description = "A simple library to serialize and deserialize SFO result using Se
 
 [dependencies]
 serde = { version = "1.0.198", features = ["derive"] }
-sfo-result = "0.1"
+sfo-result = { version = "0.1.1", features = ["serde"] }

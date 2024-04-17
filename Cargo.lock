@@ -48,16 +48,17 @@ dependencies = [
 
 [[package]]
 name = "sfo-result"
-version = "0.1.0"
+version = "0.1.1"
 source = "registry+https://github.com/rust-lang/crates.io-index"
-checksum = "e1ee4c6c1b5a6b2f4b6192370067706a078d92fc5ac1917bb84c178710ec892a"
+checksum = "ac0c8df250aa50396ca4a6c0da524773de78aa880c8be90f051b4713082b9450"
 dependencies = [
  "anyhow",
+ "serde",
 ]
 
 [[package]]
 name = "sfo-serde-result"
-version = "0.1.0"
+version = "0.1.2"
 dependencies = [
  "serde",
  "sfo-result",
